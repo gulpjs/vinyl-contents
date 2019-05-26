@@ -1,6 +1,6 @@
 {
   "name": "vinyl-contents",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Utility to read the contents of a vinyl file.",
   "author": "Gulp Team <team@gulpjs.com> (https://gulpjs.com/)",
   "contributors": [
