@@ -33,7 +33,7 @@ function gulpPug(options) {
         return cb();
       }
 
-      file.contents = pug.compile(contents, options)();
+      file.contents = pug.compile(contents.toString(), options)();
       cb(null, file);
     });
   });
@@ -43,6 +43,15 @@ function gulpPug(options) {
 ## API
 
 ### `vinylContents(file, callback)`
+
+__Warning:__ Only use this if interacting with a library that can __only__ receive strings or buffers. This loads all streaming contents into memory which can cause unexpected results for your end-users.
+
+Takes a Vinyl file and an error-first callback. Calls the callback with an error if one occur (or if the first argument is not a Vinyl file), or the file contents if no error occurs.
+
+If the Vinyl contents are:
+* A Buffer, will be returned directly.
+* A Stream, will be buffered into a BufferList and returned.
+* Empty, will be undefined.
 
 ## License
 
