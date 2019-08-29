@@ -3,6 +3,7 @@
 var stream = require('readable-stream');
 var Vinyl = require('vinyl');
 var bl = require('bl');
+var promisify = require('es6-promisify').promisify;
 
 function vinylContents(file, cb) {
   if (!Vinyl.isVinyl(file)) {
@@ -34,4 +35,4 @@ function vinylContents(file, cb) {
   cb();
 }
 
-module.exports = vinylContents;
+module.exports = promisify(vinylContents);

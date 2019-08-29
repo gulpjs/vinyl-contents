@@ -101,4 +101,15 @@ describe('vinyl-contents', function() {
       done();
     });
   });
+
+  it('returns a promise if no callback is given', function(done) {
+    var file = makeStreamFile();
+
+    vinylContents(file)
+      .then(function(contents) {
+        expect(String(contents)).toEqual(expectedBuffer.toString());
+        done();
+      });
+  });
+
 });

@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "bl": "^3.0.0",
+    "es6-promisify": "^6.0.2",
     "readable-stream": "^3.3.0",
     "vinyl": "^2.2.0"
   },
