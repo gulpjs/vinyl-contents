@@ -25,16 +25,16 @@
   },
   "dependencies": {
     "bl": "^3.0.0",
-    "readable-stream": "^3.3.0",
+    "readable-stream": "^3.4.0",
     "vinyl": "^2.2.0"
   },
   "devDependencies": {
-    "coveralls": "github:phated/node-coveralls#2.x",
-    "eslint": "^5.16.0",
+    "coveralls": "^3.0.6",
+    "eslint": "^6.2.2",
     "eslint-config-gulp": "^3.0.1",
-    "expect": "^24.8.0",
+    "expect": "^24.9.0",
     "from2": "^2.3.0",
-    "mocha": "^6.1.4",
+    "mocha": "^6.2.0",
     "nyc": "^14.1.1"
   },
   "keywords": []
