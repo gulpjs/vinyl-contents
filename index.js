@@ -17,10 +17,7 @@ function vinylContents(file, cb) {
 
   if (file.isStream()) {
     var bufferList = bl();
-    stream.pipeline([
-      file.contents,
-      bufferList,
-    ], function(err) {
+    stream.pipeline([file.contents, bufferList], function (err) {
       if (err) {
         cb(err);
         return;

@@ -23,8 +23,8 @@ var pug = require('pug');
 var vinylContents = require('vinyl-contents');
 
 function gulpPug(options) {
-  return through.obj(function(file, _enc, cb) {
-    vinylContents(file, function(err, contents) {
+  return through.obj(function (file, _enc, cb) {
+    vinylContents(file, function (err, contents) {
       if (err) {
         return cb(err);
       }
@@ -44,14 +44,15 @@ function gulpPug(options) {
 
 ### `vinylContents(file, callback)`
 
-__Warning:__ Only use this if interacting with a library that can __only__ receive strings or buffers. This loads all streaming contents into memory which can cause unexpected results for your end-users.
+**Warning:** Only use this if interacting with a library that can **only** receive strings or buffers. This loads all streaming contents into memory which can cause unexpected results for your end-users.
 
 Takes a Vinyl file and an error-first callback. Calls the callback with an error if one occur (or if the first argument is not a Vinyl file), or the file contents if no error occurs.
 
 If the Vinyl contents are:
-* A Buffer, will be returned directly.
-* A Stream, will be buffered into a BufferList and returned.
-* Empty, will be undefined.
+
+- A Buffer, will be returned directly.
+- A Stream, will be buffered into a BufferList and returned.
+- Empty, will be undefined.
 
 ## License
 

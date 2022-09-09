@@ -34,68 +34,65 @@ function makeStreamFile() {
 function makeErrorStreamFile() {
   return new Vinyl({
     path: 'test.js',
-    contents: from([
-      new Error('boom!'),
-    ]),
+    contents: from([new Error('boom!')]),
   });
 }
 
 var expectedBuffer = Buffer.from('var a = 1;');
 
-describe('vinyl-contents', function() {
-
-  it('errors if not given a vinyl object', function(done) {
-    vinylContents({}, function(err, contents) {
+describe('vinyl-contents', function () {
+  it('errors if not given a vinyl object', function (done) {
+    vinylContents({}, function (err, contents) {
       expect(err).toBeInstanceOf(Error);
       expect(contents).toBeUndefined();
       done();
     });
   });
 
-  it('returns the contents of a Vinyl file with Buffer contents', function(done) {
+  it('returns the contents of a Vinyl file with Buffer contents', function (done) {
     var file = makeBufferFile();
 
-    vinylContents(file, function(err, contents) {
+    vinylContents(file, function (err, contents) {
       expect(err).toBeFalsy();
       expect(contents).toEqual(expectedBuffer);
       done();
     });
   });
 
-  it('returns the contents of a Vinyl file with Streaming contents', function(done) {
+  it('returns the contents of a Vinyl file with Streaming contents', function (done) {
     var file = makeStreamFile();
 
-    vinylContents(file, function(err, contents) {
+    vinylContents(file, function (err, contents) {
       expect(err).toBeFalsy();
       expect(contents.toString()).toEqual(expectedBuffer.toString());
       done();
     });
   });
 
-  it('works with String(contents)', function(done) {
+  it('works with String(contents)', function (done) {
     var file = makeStreamFile();
 
-    vinylContents(file, function(err, contents) {
+    vinylContents(file, function (err, contents) {
       expect(err).toBeFalsy();
       expect(String(contents)).toEqual(expectedBuffer.toString());
       done();
     });
   });
 
-  it('returns empty contents if Vinyl file has no contents', function(done) {
+  it('returns empty contents if Vinyl file has no contents', function (done) {
     var file = makeEmptyFile();
 
-    vinylContents(file, function(err, contents) {
+    vinylContents(file, function (err, contents) {
       expect(err).toBeFalsy();
       expect(contents).toBeUndefined();
       done();
     });
   });
 
-  it('surfaces errors within content stream', function(done) {
+  it('surfaces errors within content stream', function (done) {
     var file = makeErrorStreamFile();
 
-    vinylContents(file, function(err, contents) {
+    vinylContents(file, function (err, contents) {
       expect(err).toBeInstanceOf(Error);
       expect(contents).toBeUndefined();
       done();
