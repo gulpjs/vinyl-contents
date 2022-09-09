@@ -6,7 +6,7 @@
 
 # vinyl-contents
 
-[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Azure Pipelines Build Status][azure-pipelines-image]][azure-pipelines-url] [![Travis Build Status][travis-image]][travis-url] [![AppVeyor Build Status][appveyor-image]][appveyor-url] [![Coveralls Status][coveralls-image]][coveralls-url] [![Gitter chat][gitter-image]][gitter-url]
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][ci-image]][ci-url] [![Coveralls Status][coveralls-image]][coveralls-url]
 
 Utility to read the contents of a vinyl file.
 
@@ -57,21 +57,14 @@ If the Vinyl contents are:
 
 MIT
 
-[downloads-image]: http://img.shields.io/npm/dm/vinyl-contents.svg
+<!-- prettier-ignore-start -->
+[downloads-image]: https://img.shields.io/npm/dm/vinyl-contents.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/vinyl-contents
-[npm-image]: http://img.shields.io/npm/v/vinyl-contents.svg
+[npm-image]: https://img.shields.io/npm/v/vinyl-contents.svg?style=flat-square
 
-[azure-pipelines-url]: https://dev.azure.com/gulpjs/gulp/_build/latest?definitionId=5&branchName=master
-[azure-pipelines-image]: https://dev.azure.com/gulpjs/gulp/_apis/build/status/vinyl-contents?branchName=master
-
-[travis-url]: https://travis-ci.org/gulpjs/vinyl-contents
-[travis-image]: http://img.shields.io/travis/gulpjs/vinyl-contents.svg?label=travis-ci
-
-[appveyor-url]: https://ci.appveyor.com/project/gulpjs/vinyl-contents
-[appveyor-image]: https://img.shields.io/appveyor/ci/gulpjs/vinyl-contents.svg?label=appveyor
+[ci-url]: https://github.com/gulpjs/vinyl-contents/actions?query=workflow:dev
+[ci-image]: https://img.shields.io/github/workflow/status/gulpjs/vinyl-contents/dev?style=flat-square
 
 [coveralls-url]: https://coveralls.io/r/gulpjs/vinyl-contents
-[coveralls-image]: http://img.shields.io/coveralls/gulpjs/vinyl-contents/master.svg
-
-[gitter-url]: https://gitter.im/gulpjs/gulp
-[gitter-image]: https://badges.gitter.im/gulpjs/gulp.svg
+[coveralls-image]: https://img.shields.io/coveralls/gulpjs/vinyl-contents/master.svg?style=flat-square
+<!-- prettier-ignore-end -->
