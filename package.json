@@ -22,8 +22,7 @@
     "test": "nyc mocha --async-only"
   },
   "dependencies": {
-    "bl": "^3.0.0",
-    "readable-stream": "^3.3.0",
+    "bl": "^5.0.0",
     "vinyl": "^2.2.0"
   },
   "devDependencies": {
@@ -33,7 +32,9 @@
     "expect": "^27.0.0",
     "from2": "^2.3.0",
     "mocha": "^8.0.0",
-    "nyc": "^15.0.0"
+    "nyc": "^15.0.0",
+    "readable-stream": "^3.6.0",
+    "streamx": "^2.12.5"
   },
   "nyc": {
     "reporter": [

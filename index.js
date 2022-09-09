@@ -1,6 +1,5 @@
 'use strict';
 
-var stream = require('readable-stream');
 var Vinyl = require('vinyl');
 var bl = require('bl');
 
@@ -16,15 +15,15 @@ function vinylContents(file, cb) {
   }
 
   if (file.isStream()) {
-    var bufferList = bl();
-    stream.pipeline([file.contents, bufferList], function (err) {
+    var bufferList = bl(function (err, data) {
       if (err) {
         cb(err);
         return;
       }
 
-      cb(null, bufferList);
+      cb(null, data);
     });
+    file.contents.pipe(bufferList);
     return;
   }
 
