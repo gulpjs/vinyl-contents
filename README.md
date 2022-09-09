@@ -18,24 +18,26 @@ Utility to read the contents of a vinyl file.
   It is only meant for demonstation purposes.
   For a more complete implementation, see: https://github.com/gulp-community/gulp-pug
 */
-var through = require('through2');
+var { Transform } = require('streamx');
 var pug = require('pug');
 var vinylContents = require('vinyl-contents');
 
 function gulpPug(options) {
-  return through.obj(function (file, _enc, cb) {
-    vinylContents(file, function (err, contents) {
-      if (err) {
-        return cb(err);
-      }
+  return new Transform({
+    transform: function (file, cb) {
+      vinylContents(file, function (err, contents) {
+        if (err) {
+          return cb(err);
+        }
 
-      if (!contents) {
-        return cb();
-      }
+        if (!contents) {
+          return cb();
+        }
 
-      file.contents = pug.compile(contents.toString(), options)();
-      cb(null, file);
-    });
+        file.contents = pug.compile(contents.toString(), options)();
+        cb(null, file);
+      });
+    },
   });
 }
 ```
