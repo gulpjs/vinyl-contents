@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "bl": "^5.0.0",
-    "vinyl": "^2.2.0"
+    "vinyl": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "^7.0.0",
