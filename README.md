@@ -66,7 +66,7 @@ MIT
 [npm-image]: https://img.shields.io/npm/v/vinyl-contents.svg?style=flat-square
 
 [ci-url]: https://github.com/gulpjs/vinyl-contents/actions?query=workflow:dev
-[ci-image]: https://img.shields.io/github/workflow/status/gulpjs/vinyl-contents/dev?style=flat-square
+[ci-image]: https://img.shields.io/github/actions/workflow/status/gulpjs/vinyl-contents/dev.yml?branch=master&style=flat-square
 
 [coveralls-url]: https://coveralls.io/r/gulpjs/vinyl-contents
 [coveralls-image]: https://img.shields.io/coveralls/gulpjs/vinyl-contents/master.svg?style=flat-square
