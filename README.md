@@ -18,9 +18,9 @@ Utility to read the contents of a vinyl file.
   It is only meant for demonstation purposes.
   For a more complete implementation, see: https://github.com/gulp-community/gulp-pug
 */
-var { Transform } = require('streamx');
-var pug = require('pug');
-var vinylContents = require('vinyl-contents');
+var { Transform } = require("streamx");
+var pug = require("pug");
+var vinylContents = require("vinyl-contents");
 
 function gulpPug(options) {
   return new Transform({
