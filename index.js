@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-var Vinyl = require('vinyl');
-var bl = require('bl');
+var Vinyl = require("vinyl");
+var bl = require("bl");
 
 function vinylContents(file, cb) {
   if (!Vinyl.isVinyl(file)) {
-    cb(new Error('Must be a Vinyl object'));
+    cb(new Error("Must be a Vinyl object"));
     return;
   }
 
