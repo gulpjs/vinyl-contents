@@ -1,6 +1,8 @@
 "use strict";
 
-var expect = require("expect");
+var assert = require("node:assert");
+var { describe, it } = require("node:test");
+
 var Vinyl = require("vinyl");
 
 var vinylContents = require("../");
@@ -22,30 +24,30 @@ function makeBufferFile() {
 var expectedBuffer = Buffer.from("var a = 1;");
 
 describe("vinyl-contents", function () {
-  it("errors if not given a vinyl object", function (done) {
+  it("errors if not given a vinyl object", function (t, done) {
     vinylContents({}, function (err, contents) {
-      expect(err).toBeInstanceOf(Error);
-      expect(contents).toBeUndefined();
+      assert.ok(err instanceof Error);
+      assert.ok(!contents);
       done();
     });
   });
 
-  it("returns the contents of a Vinyl file with Buffer contents", function (done) {
+  it("returns the contents of a Vinyl file with Buffer contents", function (t, done) {
     var file = makeBufferFile();
 
     vinylContents(file, function (err, contents) {
-      expect(err).toBeFalsy();
-      expect(contents).toEqual(expectedBuffer);
+      assert.ok(!err);
+      assert.deepStrictEqual(contents, expectedBuffer);
       done();
     });
   });
 
-  it("returns empty contents if Vinyl file has no contents", function (done) {
+  it("returns empty contents if Vinyl file has no contents", function (t, done) {
     var file = makeEmptyFile();
 
     vinylContents(file, function (err, contents) {
-      expect(err).toBeFalsy();
-      expect(contents).toBeUndefined();
+      assert.ok(!err);
+      assert.ok(!contents);
       done();
     });
   });
@@ -111,54 +113,60 @@ describe("vinyl-contents", function () {
     }
 
     describe("with (" + moduleName + ")", function () {
-      it("returns the contents of a Vinyl file with Streaming contents", function (done) {
+      it("returns the contents of a Vinyl file with Streaming contents", function (t, done) {
         var file = makeStreamFile();
 
         vinylContents(file, function (err, contents) {
-          expect(err).toBeFalsy();
-          expect(contents.toString()).toEqual(expectedBuffer.toString());
+          assert.ok(!err);
+          assert.deepStrictEqual(
+            contents.toString(),
+            expectedBuffer.toString(),
+          );
           done();
         });
       });
 
-      it("works with String(contents)", function (done) {
+      it("works with String(contents)", function (t, done) {
         var file = makeStreamFile();
 
         vinylContents(file, function (err, contents) {
-          expect(err).toBeFalsy();
-          expect(String(contents)).toEqual(expectedBuffer.toString());
+          assert.ok(!err);
+          assert.deepStrictEqual(String(contents), expectedBuffer.toString());
           done();
         });
       });
 
-      it("surfaces immediate errors within content stream", function (done) {
+      it("surfaces immediate errors within content stream", function (t, done) {
         var file = makeImmediateErrorStreamFile();
 
         vinylContents(file, function (err, contents) {
-          expect(err).toBeInstanceOf(Error);
-          expect(contents).toBeUndefined();
+          assert.ok(err instanceof Error);
+          assert.ok(!contents);
           done();
         });
       });
 
-      it("surfaces errors anywhere within content stream", function (done) {
+      it("surfaces errors anywhere within content stream", function (t, done) {
         var file = makeErrorStreamFile();
 
         vinylContents(file, function (err, contents) {
-          expect(err).toBeInstanceOf(Error);
-          expect(contents).toBeUndefined();
+          assert.ok(err instanceof Error);
+          assert.ok(!contents);
           done();
         });
       });
 
-      it("works with a cloned file that has streaming contents", function (done) {
+      it("works with a cloned file that has streaming contents", function (t, done) {
         var file = makeStreamFile();
 
         var file2 = file.clone();
 
         vinylContents(file2, function (err, contents) {
-          expect(err).toBeFalsy();
-          expect(contents.toString()).toEqual(expectedBuffer.toString());
+          assert.ok(!err);
+          assert.deepStrictEqual(
+            contents.toString(),
+            expectedBuffer.toString(),
+          );
           done();
         });
       });
