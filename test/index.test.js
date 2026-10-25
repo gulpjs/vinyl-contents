@@ -27,7 +27,7 @@ describe("vinyl-contents", function () {
   it("errors if not given a vinyl object", function (t, done) {
     vinylContents({}, function (err, contents) {
       assert.ok(err instanceof Error);
-      assert.ok(!contents);
+      assert.deepStrictEqual(contents, undefined);
       done();
     });
   });
