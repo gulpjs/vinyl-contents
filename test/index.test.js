@@ -141,7 +141,7 @@ describe("vinyl-contents", function () {
 
         vinylContents(file, function (err, contents) {
           assert.ok(err instanceof Error);
-          assert.ok(!contents);
+          assert.deepStrictEqual(contents, undefined);
           done();
         });
       });
